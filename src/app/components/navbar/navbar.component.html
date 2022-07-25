@@ -9,9 +9,11 @@
         routerLink="/funcionarios"
       >Listar</a>
     </mat-menu>
-
-    <button mat-icon-button (click)="authService.signOut()" matTooltip="Sair">
-      <mat-icon>logout</mat-icon>
-    </button>
+    <button mat-button [matMenuTriggerFor]="menuUsuario">{{emailUser}}</button>
+    <mat-menu #menuUsuario="matMenu">
+      <button mat-menu-item (click)="authService.signOut()" matTooltip="Sair">
+        <mat-icon>logout</mat-icon> Sair
+      </button>
+    </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>
