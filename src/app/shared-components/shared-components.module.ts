@@ -4,6 +4,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MaterialModule } from '../material/material.module';
 import { RouterModule } from '@angular/router';
 import { ConfirmarLogoutComponent } from './confirmar-logout/confirmar-logout.component';
+import { DatePipe } from '../pipes/date.pipe';
 
 
 
@@ -11,16 +12,18 @@ import { ConfirmarLogoutComponent } from './confirmar-logout/confirmar-logout.co
 @NgModule({
   declarations: [
     NavbarComponent,
-    ConfirmarLogoutComponent
+    ConfirmarLogoutComponent,
+    DatePipe
   ],
   imports: [
     CommonModule,
     MaterialModule,
     RouterModule
-    
+
   ],
   exports: [
-    NavbarComponent
+    NavbarComponent,
+    DatePipe
   ]
 })
 export class SharedComponentsModule { }

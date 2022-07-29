@@ -11,6 +11,9 @@ import { ConfirmarLogoutComponent } from '../confirmar-logout/confirmar-logout.c
 })
 export class NavbarComponent implements OnInit {
 
+
+
+
   emailUser!: string;
 
   constructor(
@@ -21,6 +24,8 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     this.emailUser= this.emailUsuario()
   }
+
+
 
   emailUsuario():string {
     const email= this.authService.emailUsuario().sub
@@ -33,10 +38,13 @@ export class NavbarComponent implements OnInit {
         this.authService.signOut()
       }
     })
-  
+
+  }
+
+  tempoToken(){
+    return this.authService.tempoApp()
   }
   
-
   }
 
 

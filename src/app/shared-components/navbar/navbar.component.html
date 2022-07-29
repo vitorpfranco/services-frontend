@@ -1,7 +1,12 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <h1>Services</h1>
-    <span class="separador"></span>  
+
+    <div class="infos">
+      <span class="tempo"><mat-icon class="icon">alarm</mat-icon>{{ tempoToken() | date }}</span>
+    </div>
+
+    <span class="separador"></span>
 
     <button matTooltip="Menu Funcionário" mat-button [matMenuTriggerFor]="menuFuncionarios">Funcionários</button>
     <mat-menu #menuFuncionarios="matMenu">
@@ -44,6 +49,7 @@
       <button mat-menu-item (click)="logout()">
         <mat-icon>logout</mat-icon>Sair?
          </button>
+
     </mat-menu>
   </mat-toolbar-row>
 </mat-toolbar>

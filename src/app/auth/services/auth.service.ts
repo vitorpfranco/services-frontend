@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
 import { User } from '../models/user';
 import { JwtHelperService } from '@auth0/angular-jwt';
+import { MatDialog } from '@angular/material/dialog';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,8 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) { }
 
   signIn(user: User): Observable<{ Authorization: string }> {
@@ -56,11 +59,21 @@ export class AuthService {
     return !this.jwt.isTokenExpired(token) // testando a validade do token
   }
 
+
+
   emailUsuario(){
-    const token= this.recuperarToken()
-    const decode= this.jwt.decodeToken(token!)
+    const token = this.recuperarToken()
+    const decode = this.jwt.decodeToken(token!)
     return decode
   }
 
-  
+
+  tempoApp() {
+    const token = this.recuperarToken()?.toString()
+    console.log(this.jwt.decodeToken(token).sub)
+    return this.jwt.getTokenExpirationDate(token)
+  }
+
+
+
 }
