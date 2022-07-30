@@ -1,6 +1,9 @@
 <div>
   <h2 mat-dialog-title>Editar Endereço #{{this.endereco.idEndereco}}</h2>
   <mat-spinner color="accent" mode="indeterminate" diameter="20" *ngIf="salvandoEndereco"></mat-spinner>
+  <button (click)="sair()" type="button" mat-icon-button>
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
 </div>
 
 <form action="" [formGroup]="formEndereco" (ngSubmit)="atualizar()">
@@ -25,6 +28,6 @@
     <input type="text" matInput formControlName="uf">
   </mat-form-field>
 
-  <button type="submit" mat-raised-button color="accent" id="salvar">Salvar
+  <button type="submit" mat-raised-button color="accent" id="salvar" [disabled]="desabilitar">Salvar
     alterações</button>
 </form>

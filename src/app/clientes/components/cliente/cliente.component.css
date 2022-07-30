@@ -1,31 +1,19 @@
-mat-card, .loader {
-  height: calc(100vh - 150px);
-  position: sticky;
-  top: 16px;
-  left: 0;
-}
-.loader {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 400px;
-  height: 400px;
+  height: fit-content;
+}
 
+div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 #salvar {
   margin-top: 16px;
-}
-
-#menu {
-  margin-left: auto;
 }
 
 #inputEndereco::-webkit-outer-spin-button,

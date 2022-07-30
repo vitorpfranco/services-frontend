@@ -1,6 +1,9 @@
 <div>
   <h2 mat-dialog-title>Novo Cliente</h2>
   <mat-spinner color="accent" mode="indeterminate" diameter="20" *ngIf="salvandoCliente"></mat-spinner>
+  <button (click)="sair()" type="button" mat-icon-button>
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
 </div>
 <section mat-dialog-content>
   <form action="" [formGroup]="formCliente" (ngSubmit)="salvar()">
@@ -22,15 +25,6 @@
           formControlName="email"
           >
       </mat-form-field>
-
-      <!-- <mat-form-field appearence="fill">
-          <mat-label>Endereço</mat-label>
-          <input id="inputEndereco"
-          type="text"
-          matInput
-          formControlName="endereco"
-          >
-      </mat-form-field> -->
 
       <button
       type="submit"

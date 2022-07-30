@@ -1,6 +1,9 @@
 <div>
   <h2 mat-dialog-title>Novo Endereço</h2>
   <mat-spinner color="accent" mode="indeterminate" diameter="20" *ngIf="salvandoEndereco"></mat-spinner>
+  <button (click)="sair()" type="button" mat-icon-button>
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
 </div>
 <section mat-dialog-content>
   <form action="" [formGroup]="formEndereco" (ngSubmit)="salvar()">
