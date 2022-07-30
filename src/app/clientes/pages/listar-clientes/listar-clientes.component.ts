@@ -3,8 +3,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Title } from '@angular/platform-browser';
 import { Endereco } from 'src/app/enderecos/models/endereco';
-import { EnderecoService } from 'src/app/enderecos/services/endereco.service';
 import { AddEnderecoComponent } from '../../components/add-endereco/add-endereco.component';
+import { ClienteComponent } from '../../components/cliente/cliente.component';
 import { ConfirmarDelecaoComponent } from '../../components/confirmar-delecao/confirmar-delecao.component';
 import { EditEnderecoComponent } from '../../components/edit-endereco/edit-endereco.component';
 import { FormClientesComponent } from '../../components/form-cliente/form-cliente.component';
@@ -33,7 +33,6 @@ export class ListarClientesComponent implements OnInit {
   ngOnInit(): void {
     this.titleService.setTitle("Clientes Service")
 
-
     this.clienteService.atualizarClientesSub$.subscribe(
       (precisaAtualizar) => {
         if (precisaAtualizar) {
@@ -59,7 +58,7 @@ export class ListarClientesComponent implements OnInit {
 
   abrirFormClientes(): void {
 
-    const referenciaDialog = this.dialog.open(FormClientesComponent)
+    const referenciaDialog = this.dialog.open(FormClientesComponent, {disableClose: true})
 
     referenciaDialog.afterClosed().subscribe(
       () => {
@@ -97,7 +96,10 @@ export class ListarClientesComponent implements OnInit {
   }
 
   addEndereco(idCliente: number) {
-    const dialog = this.dialog.open(AddEnderecoComponent, {data: idCliente})
+    const dialog = this.dialog.open(AddEnderecoComponent, {
+      data: idCliente,
+      disableClose: true
+    })
     dialog.afterClosed().subscribe(
       () => {
         this.recuperarClientes()
@@ -106,11 +108,27 @@ export class ListarClientesComponent implements OnInit {
   }
 
   editEndereco(endereco: Endereco) {
-    const dialog = this.dialog.open(EditEnderecoComponent, {data: endereco})
+    const dialog = this.dialog.open(EditEnderecoComponent, {
+      data: endereco,
+      disableClose: true
+    })
     dialog.afterClosed().subscribe(
       () => {
         this.recuperarClientes()
       }
     )
   }
+  
+  editarCliente(cliente: Cliente) {
+    const dialog = this.dialog.open(ClienteComponent, {
+      data: cliente,
+      disableClose: true
+    })
+    dialog.afterClosed().subscribe(
+      () => {
+        this.recuperarClientes()
+      }
+    )
+  }
+
 }

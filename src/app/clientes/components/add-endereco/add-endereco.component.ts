@@ -1,8 +1,9 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { EnderecoService } from 'src/app/enderecos/services/endereco.service';
+import { ConfirmarSaidaEnderecoComponent } from '../confirmar-saida-endereco/confirmar-saida-endereco.component';
 
 @Component({
   selector: 'app-add-endereco',
@@ -27,7 +28,8 @@ export class AddEnderecoComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA)
     public data: any,
     private enderecoService: EnderecoService,
-    private snackbar: MatSnackBar
+    private snackbar: MatSnackBar,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -44,6 +46,22 @@ export class AddEnderecoComponent implements OnInit {
         this.dialogRef.close()
       }
     )
+  }
+
+  sair() {
+    
+    if (this.formEndereco.value.rua.length > 0 || this.formEndereco.value.bairro.length > 0 || this.formEndereco.value.cidade.length > 0 || this.formEndereco.value.uf.length > 0) {          
+      this.dialog.open(ConfirmarSaidaEnderecoComponent)
+      .afterClosed().subscribe(
+        (response) => {
+          if (response) {
+            this.dialogRef.close()
+          }
+        }
+      )
+    } else {
+      this.dialogRef.close()
+    }    
   }
 
 }

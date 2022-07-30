@@ -6,12 +6,13 @@ import { CommonModule } from '@angular/common';
 import { ClientesRoutingModule } from './clientes-routing.module';
 import { ConfirmarDelecaoComponent } from './components/confirmar-delecao/confirmar-delecao.component';
 import { ConfirmarSaidaComponent } from './components/confirmar-saida/confirmar-saida.component';
-import { ClienteComponent } from './pages/cliente/cliente.component';
 import { ListarClientesComponent } from './pages/listar-clientes/listar-clientes.component';
 import { SharedComponentsModule } from '../shared-components/shared-components.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AddEnderecoComponent } from './components/add-endereco/add-endereco.component';
 import { EditEnderecoComponent } from './components/edit-endereco/edit-endereco.component';
+import { ClienteComponent } from './components/cliente/cliente.component';
+import { ConfirmarSaidaEnderecoComponent } from './components/confirmar-saida-endereco/confirmar-saida-endereco.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { EditEnderecoComponent } from './components/edit-endereco/edit-endereco.
     ListarClientesComponent,
     FormClientesComponent,
     AddEnderecoComponent,
-    EditEnderecoComponent
+    EditEnderecoComponent,
+    ConfirmarSaidaEnderecoComponent
   ],
 
 
