@@ -21,7 +21,7 @@ export class ListarClientesComponent implements OnInit {
 
   clientes: Cliente[] = []
 
-  colunas: Array<string> = ['id', 'nome', 'descricao','endereco', 'actions']
+  colunas: Array<string> = ['id', 'nome', 'descricao', 'endereco', 'actions']
 
   constructor(
     private clienteService: ClienteService,
@@ -58,8 +58,11 @@ export class ListarClientesComponent implements OnInit {
 
   abrirFormClientes(): void {
 
-    const referenciaDialog = this.dialog.open(FormClientesComponent, {disableClose: true})
-
+    const referenciaDialog = this.dialog.open(FormClientesComponent, {
+      disableClose: true,
+      maxWidth: '400px',
+      width: '90%',
+    })
     referenciaDialog.afterClosed().subscribe(
       () => {
         this.recuperarClientes()
@@ -73,32 +76,34 @@ export class ListarClientesComponent implements OnInit {
     const referenciaDialog = this.dialog.open(ConfirmarDelecaoComponent)
 
     referenciaDialog.afterClosed()
-    .subscribe(
-      deletar => {
-        if (deletar) {
-        this.clienteService.deleteCliente(cliente).subscribe(
-          () => {
-            this.snackbar.open('Cliente deletado', 'Ok', {
-              duration: 3000
-            })
-            this.recuperarClientes()
-          },
-          (error) => {
-            this.snackbar.open('Não foi possível deletar o cliente', 'Ok', {
-              duration: 3000
-            })
-            console.log(error)
+      .subscribe(
+        deletar => {
+          if (deletar) {
+            this.clienteService.deleteCliente(cliente).subscribe(
+              () => {
+                this.snackbar.open('Cliente deletado', 'Ok', {
+                  duration: 3000
+                })
+                this.recuperarClientes()
+              },
+              (error) => {
+                this.snackbar.open('Não foi possível deletar o cliente', 'Ok', {
+                  duration: 3000
+                })
+                console.log(error)
+              }
+            )
           }
-        )
         }
-      }
-    )
+      )
   }
 
   addEndereco(idCliente: number) {
     const dialog = this.dialog.open(AddEnderecoComponent, {
       data: idCliente,
-      disableClose: true
+      disableClose: true,
+      maxWidth: '400px',
+      width: '90%'
     })
     dialog.afterClosed().subscribe(
       () => {
@@ -110,7 +115,9 @@ export class ListarClientesComponent implements OnInit {
   editEndereco(endereco: Endereco) {
     const dialog = this.dialog.open(EditEnderecoComponent, {
       data: endereco,
-      disableClose: true
+      disableClose: true,
+      maxWidth: '400px',
+      width: '90%'
     })
     dialog.afterClosed().subscribe(
       () => {
@@ -118,11 +125,13 @@ export class ListarClientesComponent implements OnInit {
       }
     )
   }
-  
+
   editarCliente(cliente: Cliente) {
     const dialog = this.dialog.open(ClienteComponent, {
       data: cliente,
-      disableClose: true
+      disableClose: true,
+      maxWidth: '400px',
+      width: '90%'
     })
     dialog.afterClosed().subscribe(
       () => {

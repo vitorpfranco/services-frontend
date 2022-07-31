@@ -80,7 +80,8 @@ export class ListarFuncionariosComponent implements OnInit {
   abrirFormFuncionario(): void {
     const referenciaDialog = this.dialog.open(FormFuncionarioComponent, {
       disableClose: true,
-
+      maxWidth: '400px',
+      width: '90%'
     })
 
     referenciaDialog.afterClosed().subscribe(
@@ -93,6 +94,8 @@ export class ListarFuncionariosComponent implements OnInit {
     const dialog = this.dialog.open(FuncionarioComponent, {
       data: f,
       disableClose: true,
+      maxWidth: '400px',
+      width: '90%'
     })
     dialog.afterClosed().subscribe(() => {
       this.recuperarFuncionarios();
