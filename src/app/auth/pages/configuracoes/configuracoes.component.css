@@ -1,0 +1,22 @@
+mat-card {
+    height: fit-content;
+    margin: 0 auto;
+    width: 80%;
+    max-width: 1050px;
+  }
+
+  div {
+    margin: 20px;
+    text-align: center;
+  }
+
+  button{
+    margin: 30px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    margin: 30px;
+  }
