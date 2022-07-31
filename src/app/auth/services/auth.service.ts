@@ -65,4 +65,17 @@ export class AuthService {
     console.log(this.jwt.decodeToken(token).sub)
     return this.jwt.getTokenExpirationDate(token)
   }
+
+  cadastrarUsuario(user: User): Observable<User> {
+    return this.http.post<User>(`${this.baseUrl}/servicos/usuarios`, user)
+  }
+
+  alterarSenha(user: User): Observable<User> {
+    return this.http.put<User>(`${this.baseUrl}/servicos/usuarios`, user)
+  }
+
+  desabilitarUsuario(email: string) {
+    return this.http.delete<User>(`${this.baseUrl}/servicos/usuarios/desabilitar/${email}`)
+  }
+
 }

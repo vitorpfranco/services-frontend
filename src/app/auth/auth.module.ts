@@ -6,11 +6,16 @@ import { LoginComponent } from './pages/login/login.component';
 import { MaterialModule } from '../material/material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
+import { ConfiguracoesComponent } from './pages/configuracoes/configuracoes.component';
+import { SharedComponentsModule } from '../shared-components/shared-components.module';
+import { ConfirmarDesativacaoComponent } from './components/confirmar-desativacao/confirmar-desativacao.component';
 
 
 @NgModule({
   declarations: [
-    LoginComponent
+    LoginComponent,
+    ConfiguracoesComponent,
+    ConfirmarDesativacaoComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +23,8 @@ import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
     MaterialModule,
     ReactiveFormsModule,
     RecaptchaFormsModule,
-    RecaptchaModule
+    RecaptchaModule,
+    SharedComponentsModule
   ]
 })
 export class AuthModule { }
