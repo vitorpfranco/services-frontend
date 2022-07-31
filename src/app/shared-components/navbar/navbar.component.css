@@ -1,13 +1,36 @@
 .toolbar {
   display: flex;
-  margin-right: 5px;
+  padding: 7px 5px 7px 5px;
+}
+
+@media (max-width: 1200px) {
+  .toolbar {
+    background-color: rgb(0, 0, 0, 0.9);
+    color: white;
+  }
+
+  ::ng-deep .menuUser {
+    background-color: rgb(0, 0, 0, 0.9);
+    color: white;
+  }
+
+  ::ng-deep .menuUser button {
+    color: white;
+  }
+
+  ::ng-deep .menuUser button .iconUser {
+    color: white;
+  }
+
 }
 
 .spacer {
   flex: 1 1 auto;
 }
 
-
+.menu-button {
+  margin-left: 15px;
+}
 
 .title {
   text-align: center;

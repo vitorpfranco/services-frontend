@@ -32,7 +32,7 @@
       </a>
       <div>
         <p>Sua sessão expira:</p>
-        <p>{{data|date:'dd/MM'}} as {{data|date:'h:mm'}}</p>
+        <p>{{data|date:'dd/MM'}} as {{data|date:'HH:mm'}}</p>
         <p></p>
         <a (click)="logout()">
           <mat-icon>logout</mat-icon>
@@ -43,7 +43,7 @@
   </mat-sidenav>
   <mat-sidenav-content class="mat-sidenav-content">
     <div class="toolbar">
-      <button mat-icon-button *ngIf="mobileQuery.matches" (click)="snav.toggle()">
+      <button mat-icon-button *ngIf="mobileQuery.matches" (click)="snav.toggle()" class="menu-button">
         <mat-icon>menu</mat-icon>
       </button>
       <span class="spacer"></span>
@@ -52,14 +52,14 @@
         {{emailUser}}
         <mat-icon>expand_more</mat-icon>
       </button>
-      <mat-menu #userMenu="matMenu">
+      <mat-menu #userMenu="matMenu" class="menuUser">
         <button mat-menu-item (click)="logout()">
-          <mat-icon>logout</mat-icon>
+          <mat-icon class="iconUser">logout</mat-icon>
           Sair
         </button>
         <button mat-menu-item routerLink="/perfil">
-          <mat-icon>person</mat-icon>
-          Perfil
+          <mat-icon class="iconUser">settings</mat-icon>
+          Configurações
         </button>
       </mat-menu>
     </div>
