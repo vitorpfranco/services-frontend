@@ -5,12 +5,13 @@
 form {
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 100%;
   height: fit-content;
 }
 
+
 #salvar {
-  margin-top: 16px;
+  margin-top: 8px;
 }
 
 #image-preview {

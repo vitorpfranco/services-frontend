@@ -53,6 +53,8 @@ export class ListarCargosComponent implements OnInit {
 
     const referenciaDialog = this.dialog.open(FormCargosComponent, {
       disableClose: true,
+      maxWidth: '400px',
+      width: '90%'
     })
 
     referenciaDialog.afterClosed().subscribe(
@@ -64,7 +66,9 @@ export class ListarCargosComponent implements OnInit {
   editarCargo(cargo: Cargo) {
     const referenciaDialog = this.dialog.open(CargoComponent, {
       disableClose: true,
-      data: cargo
+      data: cargo,
+      maxWidth: '400px',
+      width: '90%'
     })
 
     referenciaDialog.afterClosed().subscribe(

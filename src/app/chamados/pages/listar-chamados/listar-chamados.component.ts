@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { Chamado } from '../../models/chamado';
@@ -15,6 +15,7 @@ import { FormChamadoComponent } from '../../components/form-chamado/form-chamado
 import { AddPagamentoComponent } from '../../components/add-pagamento/add-pagamento.component';
 import { EditPagamentoComponent } from '../../components/edit-pagamento/edit-pagamento.component';
 import { Pagamento } from 'src/app/pagamentos/models/pagamento';
+import { MediaMatcher } from '@angular/cdk/layout';
 
 
 @Component({
@@ -31,12 +32,20 @@ import { Pagamento } from 'src/app/pagamentos/models/pagamento';
 })
 
 export class ListarChamadosComponent implements OnInit, AfterViewInit {
+  mobileQuery: MediaQueryList;
   chamados!: Chamado[]
   colunas: string[] = ['id', 'titulo', 'data', 'funcionario', 'cliente', 'pagamento', 'status', 'actions'];
+  colunasMobile: string[] = ['id', 'titulo', 'pagamento', 'status', 'actions'];
   expandedElement!: Chamado[] | null
   columnsToDisplayWithExpand = [...this.colunas, 'expand'];
+  columnsToDisplayWithExpandMobile = [...this.colunasMobile, 'expand'];
+  private _mobileQueryListener: () => void;
 
-  constructor(private chamadosService: ChamadosService, private dialog: MatDialog, private snackbar: MatSnackBar, private titleService: Title, private funcionarioService: FuncionarioService, private ClienteService: ClienteService) { }
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher, private chamadosService: ChamadosService, private dialog: MatDialog, private snackbar: MatSnackBar, private titleService: Title, private funcionarioService: FuncionarioService, private ClienteService: ClienteService) {
+    this.mobileQuery = media.matchMedia('(max-width: 820px)');
+    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this._mobileQueryListener);
+  }
 
   ngAfterViewInit() {
   }
@@ -85,7 +94,9 @@ export class ListarChamadosComponent implements OnInit, AfterViewInit {
       disableClose: true,
       data: {
         chamado
-      }
+      },
+      maxWidth: '400px',
+      width: '90%'
     })
     dialogRef.afterClosed().subscribe(() => {
       this.getChamados()
@@ -93,21 +104,34 @@ export class ListarChamadosComponent implements OnInit, AfterViewInit {
   }
 
   cadastrarChamado() {
-    const dialog = this.dialog.open(FormChamadoComponent, { disableClose: true })
+    const dialog = this.dialog.open(FormChamadoComponent, {
+      disableClose: true,
+      maxWidth: '400px',
+      width: '90%'
+    })
     dialog.afterClosed().subscribe(() => {
       this.getChamados();
     })
   }
 
   addPagamento(idChamado: number) {
-    const dialog = this.dialog.open(AddPagamentoComponent, { data: idChamado })
+    const dialog = this.dialog.open(AddPagamentoComponent, {
+      data: idChamado,
+      maxWidth: '400px',
+      width: '90%'
+    },
+    )
     dialog.afterClosed().subscribe(() => {
       this.getChamados();
     })
   }
 
   edit(pagamento: Pagamento) {
-    const dialog = this.dialog.open(EditPagamentoComponent, { data: pagamento })
+    const dialog = this.dialog.open(EditPagamentoComponent, {
+      data: pagamento,
+      maxWidth: '400px',
+      width: '90%'
+    })
     dialog.afterClosed().subscribe(() => {
       this.getChamados();
     })

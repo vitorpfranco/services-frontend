@@ -2,7 +2,7 @@ form {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 400px;
+  width: 100%;
   height: fit-content;
 }
 
@@ -18,6 +18,6 @@ div {
 
 #inputEndereco::-webkit-outer-spin-button,
 #inputEndereco::-webkit-inner-spin-button {
--webkit-appearance: none;
-margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
