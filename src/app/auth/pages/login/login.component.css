@@ -1,33 +1,63 @@
 .grid-container {
-  height: 100vh;
-  display: grid;
-  grid-template-rows: 1fr;
-  grid-template-columns: 1fr 500px;
-}
+  background-color: #0f637a;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
 
-.image-container {
-  background-image: url(/assets/rocket.gif);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 400px;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
 }
 
 .form-container {
-  border-left: 5px solid #3f51b5;
+  box-shadow: 0 0 0 1px rgb(0, 0, 0, 0, 5);
+  background-color: rgb(255, 255, 255, 0.9);
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  padding: 0 32px;
+  border-radius: 10px;
+  flex-wrap: wrap;
+  width: fit-content;
+
 }
 
 .form-container form {
+
   display: flex;
   flex-direction: column;
-  width: 100%;
 }
 
 form re-captcha {
   margin-bottom: 20px;
   align-self: center;
+  border-radius: 10px;
 }
+
+form {
+  padding: 10px 20px 20px;
+}
+
+form h2 {
+  margin-bottom: 10px;
+}
+
+.title-container {
+  width: 100%;
+  background-color: rgb(0, 0, 0, 0.85);
+  border-top-right-radius: inherit;
+  border-top-left-radius: inherit;
+  padding: 15px 30px;
+  text-align: center;
+}
+
+.title-container h1 {
+  color: #0f637a;
+}
+
+.title-container h1 span {
+  color: #ffd900;
+}
+
+
