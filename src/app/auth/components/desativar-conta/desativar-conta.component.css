@@ -1,0 +1,15 @@
+div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  height: fit-content;
+}
+
+p {
+  text-align: center;
+}
+
+button {
+  align-self: center;
+  max-width: 150px;
+}

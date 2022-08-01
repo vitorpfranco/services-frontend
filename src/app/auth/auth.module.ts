@@ -9,13 +9,20 @@ import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 import { ConfiguracoesComponent } from './pages/configuracoes/configuracoes.component';
 import { SharedComponentsModule } from '../shared-components/shared-components.module';
 import { ConfirmarDesativacaoComponent } from './components/confirmar-desativacao/confirmar-desativacao.component';
+import { AlterarSenhaComponent } from './components/alterar-senha/alterar-senha.component';
+import { DesativarContaComponent } from './components/desativar-conta/desativar-conta.component';
+import { CadastrarUsuarioComponent } from './components/cadastrar-usuario/cadastrar-usuario.component';
+import { Router, RouterModule } from '@angular/router';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
     ConfiguracoesComponent,
-    ConfirmarDesativacaoComponent
+    ConfirmarDesativacaoComponent,
+    AlterarSenhaComponent,
+    DesativarContaComponent,
+    CadastrarUsuarioComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +31,8 @@ import { ConfirmarDesativacaoComponent } from './components/confirmar-desativaca
     ReactiveFormsModule,
     RecaptchaFormsModule,
     RecaptchaModule,
-    SharedComponentsModule
+    SharedComponentsModule,
+    RouterModule
   ]
 })
 export class AuthModule { }
