@@ -21,7 +21,6 @@ export class ConfiguracoesComponent implements OnInit {
     password: ['', [Validators.required]]
   })
 
-
   constructor(
     private titleService: Title,
     private authService: AuthService,
@@ -42,6 +41,7 @@ export class ConfiguracoesComponent implements OnInit {
         this.snackbar.open('Usuário cadastrado com sucesso.', 'Ok', {
           duration: 3000
         })
+
         this.cadastroForm.reset()
       }
     )
@@ -63,7 +63,7 @@ export class ConfiguracoesComponent implements OnInit {
         }
       }
     )
-  
-    }
+
+  }
 
 }

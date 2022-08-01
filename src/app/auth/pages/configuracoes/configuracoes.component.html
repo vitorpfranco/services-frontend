@@ -1,40 +1,14 @@
 <app-navbar [titulo]="'Configurações'">
-    <mat-card class="mat-elevation-z8">
-        <mat-tab-group mat-align-tabs="center">
-            <mat-tab label="Alterar Senha">
-                Content 1
-            </mat-tab>
-
-            <mat-tab label="Cadastrar Usuário">
-                
-                <form [formGroup]="cadastroForm" (ngSubmit)="cadastrar()">
-                    <mat-form-field appearance="outline">
-                      <mat-label>E-mail</mat-label>
-                      <input type="text" matInput placeholder="Seu e-mail" formControlName="login">
-                      <mat-error>
-                        <span>Este campo é obrigatório</span>
-                      </mat-error>
-                    </mat-form-field>
-                    <mat-form-field appearance="outline">
-                      <mat-label>Senha</mat-label>
-                      <input type="password" matInput placeholder="Sua senha" formControlName="password">
-                      <mat-error>
-                        <span>Este campo é obrigatório</span>
-                      </mat-error>
-                    </mat-form-field>
-                    <button mat-raised-button type="submit">Cadastrar</button>
-                  </form>
-
-            </mat-tab>
-
-            <mat-tab label="Desativar Conta">
-                <div>
-                    <p>Para desativar sua conta clique no botão abaixo:</p><br>
-                    <p> Atenção! Essa ação não pode ser desfeita.</p>
-                    <button mat-raised-button type="button" color="warn" (click)="desativarConta()">Desativar Conta</button>
-                </div>
-            </mat-tab>
-        </mat-tab-group>
-    </mat-card>
-
+  <div class="container">
+    <main class="mat-elevation-z5">
+      <div class="options mat-elevation-z4">
+        <a routerLink="/auth/configuracoes/alterar-senha" routerLinkActive="active">Alterar Senha</a>
+        <a routerLink="/auth/configuracoes/cadastrar-usuario" routerLinkActive="active">Cadastrar Usuário</a>
+        <a routerLink="/auth/configuracoes/desativar-conta" routerLinkActive="active">Desativar Conta</a>
+      </div>
+      <div class="content-container">
+        <router-outlet></router-outlet>
+      </div>
+    </main>
+  </div>
 </app-navbar>

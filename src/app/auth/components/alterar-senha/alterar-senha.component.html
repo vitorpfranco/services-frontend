@@ -1,0 +1,16 @@
+<form [formGroup]="senhaForm" (ngSubmit)="alterarSenha()">
+  <h3>Alterar Senha</h3>
+  <mat-form-field appearance="outline">
+    <mat-label>Senha</mat-label>
+    <input type="password" matInput placeholder="Sua Senha" formControlName="password">
+    <mat-error>
+      <span>Este campo é obrigatório</span>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field appearance="outline">
+    <mat-label>Confirme a senha</mat-label>
+    <input type="password" matInput placeholder="Confirme a senha" formControlName="confirmPassword">
+    <mat-error *ngIf="senhaForm?.errors?.['passwordsDontMatch']">As senhas devem ser iguais</mat-error>
+  </mat-form-field>
+  <button mat-raised-button type="submit">Alterar Senha</button>
+</form>
