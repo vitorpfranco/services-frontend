@@ -9,7 +9,7 @@ import { ChamadosService } from 'src/app/chamados/services/chamados.service';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit, AfterViewInit {
+export class DashboardComponent implements OnInit {
   displayedColumns: string[] = ['funcionario', 'atribuidos', 'concluidos', 'arquivados', 'total'];
   dataSource!: MatTableDataSource<any>
 
@@ -17,9 +17,6 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatSort) sort!: MatSort;
 
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-  }
   ngOnInit(): void {
     this.chamadosPorFuncionarios()
   }
