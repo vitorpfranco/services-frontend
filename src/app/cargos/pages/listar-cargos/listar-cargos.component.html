@@ -1,6 +1,6 @@
 <app-navbar [titulo]="'Cargos'">
     <main>
-        <button mat-mini-fab (click)="abrirFormCargo()" id="add">
+        <button mat-mini-fab (click)="abrirFormCargo()" id="add" matTooltip="Adicionar Cargo">
             <mat-icon>add</mat-icon>
         </button>
         <table mat-table [dataSource]="cargos" class="mat-elevation-z8">
@@ -31,10 +31,12 @@
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef></th>
                 <td mat-cell *matCellDef="let c">
-                    <button mat-icon-button (click)="editarCargo(c)">
+                    <button mat-icon-button (click)="editarCargo(c)" matTooltip="Editar Cargo"
+                        [matTooltipPosition]="'left'">
                         <mat-icon>edit</mat-icon>
                     </button>
-                    <button mat-icon-button color="warn" (click)="deletarCargo(c)">
+                    <button mat-icon-button color="warn" (click)="deletarCargo(c)" matTooltip="Deletar Cargo"
+                        [matTooltipPosition]="'right'">
                         <mat-icon>delete</mat-icon>
                     </button>
                 </td>

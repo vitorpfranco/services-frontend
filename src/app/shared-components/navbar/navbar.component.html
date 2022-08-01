@@ -51,7 +51,7 @@
         <mat-icon>menu</mat-icon>
       </button>
       <span class="spacer"></span>
-      <button mat-button [matMenuTriggerFor]="userMenu">
+      <button mat-button [matMenuTriggerFor]="userMenu" matTooltip="Menu Usuário" [matTooltipPosition]="'above'">
         <img class="profile-img-toolbar" width="30" height="30" src="assets/no-profile.png" alt="Foto de perfil">
         {{emailUser}}
         <mat-icon>expand_more</mat-icon>

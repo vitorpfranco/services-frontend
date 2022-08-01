@@ -1,6 +1,6 @@
 <app-navbar [titulo]="'Clientes'">
     <main>
-        <button mat-mini-fab (click)="abrirFormClientes()" id="add">
+        <button mat-mini-fab (click)="abrirFormClientes()" id="add" matTooltip="Adicionar Cliente">
             <mat-icon>person_add</mat-icon>
         </button>
         <table mat-table [dataSource]="clientes" class="mat-elevation-z8">
@@ -24,13 +24,15 @@
                 <td mat-cell *matCellDef="let c">
                     <div *ngIf="c.enderecoCliente != undefined, else btnEndereco"> {{c.enderecoCliente.rua}},
                         {{c.enderecoCliente.bairro}}, {{c.enderecoCliente.cidade}} - {{c.enderecoCliente.uf}}
-                        <button mat-icon-button (click)="editEndereco(c.enderecoCliente)">
+                        <button mat-icon-button (click)="editEndereco(c.enderecoCliente)" matTooltip="Editar Endereço"
+                            [matTooltipPosition]="'right'">
                             <mat-icon>edit_note</mat-icon>
                         </button>
                     </div>
 
                     <ng-template #btnEndereco>
-                        <button mat-icon-button (click)="addEndereco(c.idCliente)">
+                        <button mat-icon-button (click)="addEndereco(c.idCliente)" matTooltip="Adicionar Endereço"
+                            [matTooltipPosition]="'right'">
                             <mat-icon>add</mat-icon>
                         </button>
                     </ng-template>
@@ -41,11 +43,12 @@
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef> </th>
                 <td mat-cell *matCellDef="let c">
-                    <button mat-icon-button matTooltip="Editar Chamado" (click)="editarCliente(c)"
+                    <button mat-icon-button matTooltip="Editar Cliente" (click)="editarCliente(c)"
                         [matTooltipPosition]="'left'">
                         <mat-icon>edit</mat-icon>
                     </button>
-                    <button mat-icon-button color="warn" (click)="deletarCliente(c)">
+                    <button mat-icon-button color="warn" (click)="deletarCliente(c)" matTooltip="Deletar Cliente"
+                        [matTooltipPosition]="'right'">
                         <mat-icon>delete</mat-icon>
                     </button>
                 </td>

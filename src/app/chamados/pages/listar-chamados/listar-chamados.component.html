@@ -11,7 +11,7 @@
       </ng-container>
 
       <ng-container matColumnDef="titulo">
-        <th mat-header-cell *matHeaderCellDef> titulo </th>
+        <th mat-header-cell *matHeaderCellDef> Título </th>
         <td mat-cell *matCellDef="let chamado"> {{chamado.titulo}} </td>
       </ng-container>
 
@@ -41,12 +41,14 @@
         <td mat-cell *matCellDef="let chamado">
           <div *ngIf="chamado.pagamento!=null;else pagamentoNE">
             {{chamado.pagamento.status}}
-            <button (click)="edit(chamado.pagamento)" mat-icon-button>
+            <button (click)="edit(chamado.pagamento)" mat-icon-button matTooltip="Editar Pagamento"
+              [matTooltipPosition]="'right'">
               <mat-icon>edit_note</mat-icon>
             </button>
           </div>
           <ng-template #pagamentoNE>
-            <button (click)="addPagamento(chamado.idChamado)" mat-icon-button>
+            <button (click)="addPagamento(chamado.idChamado)" mat-icon-button matTooltip="Adicionar Pagamento"
+              [matTooltipPosition]="'left'">
               <mat-icon>add</mat-icon>
             </button>
           </ng-template>
@@ -70,7 +72,8 @@
         <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
         <td mat-cell *matCellDef="let element" class="arrowButton">
           <button mat-icon-button aria-label="expand row"
-            (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()">
+            (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()"
+            matTooltip="Mais Informaçoes" [matTooltipPosition]="'right'">
             <mat-icon *ngIf="expandedElement !== element">keyboard_arrow_down</mat-icon>
             <mat-icon *ngIf="expandedElement === element">keyboard_arrow_up</mat-icon>
           </button>
