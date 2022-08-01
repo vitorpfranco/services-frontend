@@ -7,6 +7,7 @@ import { ChamadosService } from '../../services/chamados.service';
 import { Chamado } from '../../models/chamado';
 import { Cliente } from 'src/app/clientes/models/cliente';
 import { ConfirmarSaidaComponent } from '../confirmar-saida/confirmar-saida.component';
+import { ConfirmarLogoutComponent } from 'src/app/shared-components/confirmar-logout/confirmar-logout.component';
 
 
 @Component({
@@ -60,6 +61,9 @@ export class AlterarChamadoComponent implements OnInit {
     }
     const idFuncionario = this.formChamados.value.idFuncionario
 
+    if (idFuncionario && !c.status || idFuncionario && c.status === "RECEBIDO") {
+      c.status = "ATRIBUIDO"
+    }
     this.chamadosService.putChamado(c, idFuncionario).subscribe(() => {
       this.dialogRef.close()
     })

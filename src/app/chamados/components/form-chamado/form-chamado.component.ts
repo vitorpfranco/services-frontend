@@ -42,6 +42,7 @@ export class FormChamadoComponent implements OnInit {
     const chamado: Chamado = {
       titulo: this.formChamados.value.titulo,
       descricao: this.formChamados.value.descricao,
+      status: "RECEBIDO"
     }
 
     this.chamadosService.postChamado(chamado, idCliente).subscribe(chamado => {

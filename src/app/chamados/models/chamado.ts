@@ -5,7 +5,7 @@ export interface Chamado {
   titulo: string
   descricao?: string
   dataEntrada?: Date
-  status?: string
+  status: string
   funcionario?: Funcionario
   cliente?: string
   pagamento?: string
