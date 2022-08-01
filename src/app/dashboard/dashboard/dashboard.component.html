@@ -1,0 +1,41 @@
+<app-navbar>
+  <div class="container">
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+      <ng-container matColumnDef="funcionario">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Funcionarios
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element[0]}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="atribuidos">
+        <th class="ATRIBUIDO" mat-header-cell *matHeaderCellDef mat-sort-header>
+          Chamados Atribuidos
+        </th>
+        <td mat-cell *matCellDef="let element">{{element[1]}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="concluidos">
+        <th class="CONCLUIDO" mat-header-cell *matHeaderCellDef mat-sort-header>
+          Chamados Concluidos
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element[2]}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="arquivados">
+        <th class="ARQUIVADO" mat-header-cell *matHeaderCellDef mat-sort-header>
+          Chamados Arquivados
+        </th>
+        <td mat-cell *matCellDef="let element">{{element[3]}}</td>
+      </ng-container>
+      <ng-container matColumnDef="total">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Total
+        </th>
+        <td mat-cell *matCellDef="let element"> {{element[4]}}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+  </div>
+</app-navbar>

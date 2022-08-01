@@ -12,7 +12,8 @@ import { ConfirmarLogoutComponent } from '../confirmar-logout/confirmar-logout.c
 export class NavbarComponent implements OnDestroy, OnInit {
   mobileQuery: MediaQueryList;
   emailUser!: string;
-  data = this.tempoToken();
+  data = this.tempoToken() as Date;
+  tempoRestante!: Date
   @Input()
   titulo!: string;
 
@@ -22,7 +23,8 @@ export class NavbarComponent implements OnDestroy, OnInit {
     this.mobileQuery.addListener(this._mobileQueryListener);
   }
   ngOnInit(): void {
-    this.emailUser = this.emailUsuario()
+    this.emailUser = this.emailUsuario();
+    this.timer()
   }
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
@@ -46,5 +48,13 @@ export class NavbarComponent implements OnDestroy, OnInit {
         this.authService.signOut()
       }
     })
+  }
+  timer() {
+    this.data = this.authService.tempoApp() as Date
+    const timer = setInterval(() => {
+      const dataHoje = new Date();
+      const tempo = this.data.getTime() - dataHoje.getTime();
+      this.tempoRestante = new Date(tempo)
+    }, 1)
   }
 }

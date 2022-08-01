@@ -15,7 +15,7 @@ export class ChamadosService {
   getChamados(): Observable<Chamado[]> {
     return this.http.get<Chamado[]>(`${this.baseUrl}`)
   }
-  
+
   getChamadoById(idChamado: number): Observable<Chamado> {
     return this.http.get<Chamado>(`${this.baseUrl}/${idChamado}`)
   }
@@ -37,4 +37,9 @@ export class ChamadosService {
   postChamado(chamado: Chamado, idCliente: number) {
     return this.http.post<Chamado>(`${this.baseUrl}/${idCliente}`, chamado)
   }
+
+  chamadosPorFuncionarios(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/chamadosPorFunc`)
+  }
+
 }

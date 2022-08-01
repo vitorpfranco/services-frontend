@@ -62,7 +62,6 @@ export class AuthService {
 
   tempoApp() {
     const token = this.recuperarToken()?.toString()
-    console.log(this.jwt.decodeToken(token).sub)
     return this.jwt.getTokenExpirationDate(token)
   }
 

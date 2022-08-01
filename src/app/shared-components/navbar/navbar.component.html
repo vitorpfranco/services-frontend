@@ -10,30 +10,34 @@
       </div>
     </div>
     <nav>
-      <a routerLink="../funcionarios" routerLinkActive="active">
+      <a routerLink="/dashboard" routerLinkActive="active">
+        <mat-icon>dashboard</mat-icon>
+        <h3>Dashboard</h3>
+      </a>
+      <a routerLink="/funcionarios" routerLinkActive="active">
         <mat-icon>badge</mat-icon>
         <h3>Funcionarios</h3>
       </a>
-      <a routerLink="../clientes" routerLinkActive="active">
+      <a routerLink="/clientes" routerLinkActive="active">
         <mat-icon>person_filled</mat-icon>
         <h3>Clientes</h3>
       </a>
-      <a routerLink="../chamados" routerLinkActive="active">
+      <a routerLink="/chamados" routerLinkActive="active">
         <mat-icon>home_repair_service</mat-icon>
         <h3>Chamados</h3>
       </a>
-      <a routerLink="../pagamentos" routerLinkActive="active">
+      <a routerLink="/pagamentos" routerLinkActive="active">
         <mat-icon>payments</mat-icon>
         <h3>Pagamentos</h3>
       </a>
-      <a routerLink="../cargos" routerLinkActive="active">
+      <a routerLink="/cargos" routerLinkActive="active">
         <mat-icon>home_repair_service</mat-icon>
         <h3>Cargos</h3>
       </a>
       <div>
         <p>Sua sessão expira:</p>
         <p>{{data|date:'dd/MM'}} as {{data|date:'HH:mm'}}</p>
-        <p></p>
+        <p>Tempo Restante: {{tempoRestante|date:"HH:mm:ss"}}</p>
         <a (click)="logout()">
           <mat-icon>logout</mat-icon>
           <h3>Sair</h3>
@@ -66,6 +70,8 @@
     <div class="title">
       <h1>{{titulo}}</h1>
     </div>
-    <ng-content></ng-content>
+    <div class="main-content">
+      <ng-content></ng-content>
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
