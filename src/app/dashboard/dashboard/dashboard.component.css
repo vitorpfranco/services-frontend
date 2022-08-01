@@ -1,0 +1,34 @@
+.container {
+  display: flex;
+  padding: 20px 30px;
+}
+
+table {
+  max-width: 850px;
+  width: 90%;
+}
+
+th {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.RECEBIDO {
+  color: #FFC107;
+}
+
+.ATRIBUIDO {
+  color: rgb(34, 100, 161);
+}
+
+.CONCLUIDO {
+  color: rgb(12, 138, 12);
+}
+
+.ARQUIVADO {
+  color: rgba(0, 0, 0, 0.836);
+}
+
+th:last-child {
+  color: black;
+}

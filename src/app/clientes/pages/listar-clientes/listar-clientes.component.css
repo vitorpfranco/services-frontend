@@ -27,3 +27,17 @@ th {
 ng-container th td {
   text-align: center !important;
 }
+
+@media (max-width:800px) {
+  table {
+    width: 90%;
+  }
+}
+
+@media (max-width:700px) {
+  table {
+    width: 100%;
+    min-width: 640px;
+  }
+
+}

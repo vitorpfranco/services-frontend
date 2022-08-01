@@ -1,3 +1,12 @@
+.mat-sidenav-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  overflow: auto;
+}
+
 .toolbar {
   display: flex;
   padding: 7px 5px 7px 5px;

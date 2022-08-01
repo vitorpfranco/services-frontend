@@ -49,9 +49,6 @@ export class ListarClientesComponent implements OnInit {
       },
       (erro) => {
         console.log(erro)
-      },
-      () => {
-        console.log('Dados enviados com sucesso')
       }
     )
   }
