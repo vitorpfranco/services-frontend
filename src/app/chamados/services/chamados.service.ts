@@ -39,7 +39,10 @@ export class ChamadosService {
   }
 
   chamadosPorFuncionarios(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/chamadosPorFunc`)
+    return this.http.get(`${this.baseUrl}/chamados-por-func`)
+  }
+  chamadosPorStatus(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/qtd-por-status`)
   }
 
 }

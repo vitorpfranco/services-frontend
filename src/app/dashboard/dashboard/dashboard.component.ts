@@ -12,6 +12,7 @@ import { ChamadosService } from 'src/app/chamados/services/chamados.service';
 export class DashboardComponent implements OnInit {
   displayedColumns: string[] = ['funcionario', 'atribuidos', 'concluidos', 'arquivados', 'total'];
   dataSource!: MatTableDataSource<any>
+  chamadoStatus: any[] = [['ATRIBUIDO', 'Carregando'], ['RECEBIDO', 'Carregando'], ['CONCLUIDO', 'Carregando'], ['ARQUIVADO', 'Carregando']]
 
   constructor(private chamadosService: ChamadosService, private _liveAnnouncer: LiveAnnouncer) { }
 
@@ -19,6 +20,7 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.chamadosPorFuncionarios()
+    this.chamadosPorStatus();
   }
   chamadosPorFuncionarios() {
     this.chamadosService.chamadosPorFuncionarios().subscribe((response) => {
@@ -33,8 +35,13 @@ export class DashboardComponent implements OnInit {
           default: return item[property];
         }
       }
-
       this.dataSource.sort = this.sort
+    })
+  }
+  chamadosPorStatus() {
+    this.chamadosService.chamadosPorStatus().subscribe((response) => {
+      this.chamadoStatus = response
+      console.log(this.chamadoStatus)
     })
   }
   announceSortChange(sortState: Sort) {
