@@ -69,8 +69,8 @@ export class AuthService {
     return this.http.post<User>(`${this.baseUrl}/servicos/usuarios`, user)
   }
 
-  alterarSenha(user: User): Observable<User> {
-    return this.http.put<User>(`${this.baseUrl}/servicos/usuarios`, user)
+  alterarSenha(user: User): Observable<any> {
+    return this.http.put(`${this.baseUrl}/servicos/usuarios`, user)
   }
 
   desabilitarUsuario(email: string) {

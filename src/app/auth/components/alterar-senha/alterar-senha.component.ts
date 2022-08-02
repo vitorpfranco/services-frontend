@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { User } from '../../models/user';
 import { AuthService } from '../../services/auth.service';
 export function passwordsMatchValidator(): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
@@ -22,7 +23,7 @@ export function passwordsMatchValidator(): ValidatorFn {
   styleUrls: ['./alterar-senha.component.css']
 })
 export class AlterarSenhaComponent implements OnInit {
-
+  userEmail!: string
   senhaForm: FormGroup = this.fb.group({
     password: ['', [Validators.required]],
     confirmPassword: ['', [Validators.required]]
@@ -32,10 +33,19 @@ export class AlterarSenhaComponent implements OnInit {
   constructor(private fb: FormBuilder, private snackbar: MatSnackBar, private authService: AuthService) { }
 
   ngOnInit(): void {
+    this.userEmail = this.authService.emailUsuario().sub
   }
   alterarSenha() {
-    const login: string = this.authService.emailUsuario();
-    const password: string = this.senhaForm.value.password
-    this.authService.alterarSenha({ login, password })
+    const c: User = {
+      login: this.userEmail,
+      password: this.senhaForm.value.password
+    }
+
+    this.authService.alterarSenha(c).subscribe(() => {
+      this.snackbar.open('Senha alterada com sucesso.', 'Ok', {
+        duration: 3000
+      })
+      this.senhaForm.reset();
+    })
   }
 }
