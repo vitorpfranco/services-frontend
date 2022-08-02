@@ -23,8 +23,8 @@ export class AlterarChamadoComponent implements OnInit {
 
   formChamados: FormGroup = this.fb.group({
     titulo: ['', [Validators.required]],
-    descricao: ['', [Validators.required]],
-    idFuncionario: [''],
+    descricao: [''],
+    idFuncionario: ['', [Validators.required]],
     status: ['', Validators.required]
   })
 
